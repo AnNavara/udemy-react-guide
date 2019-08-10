@@ -45,9 +45,9 @@ class Auth extends Component {
   }
 
   componentDidMount() {
-    if (!this.props.isBuildingBurger && this.props.authRedirectPath !== '/'){
+    if (!this.props.isBuildingBurger && this.props.authRedirectPath !== '/') {
       this.props.onSetAuthRedirectPath('/')
-    } 
+    }
   }
 
   inputChangedHandler = (event, controlName) => {
@@ -58,7 +58,7 @@ class Auth extends Component {
         touched: true
       })
     });
-    this.setState({controls: updatedControls})
+    this.setState({ controls: updatedControls })
   }
 
   submitHandler = (event) => {
@@ -68,11 +68,11 @@ class Auth extends Component {
 
   switchAuthModeHandler = () => {
     this.setState(prevState => {
-      return {isSignup: !prevState.isSignup}
+      return { isSignup: !prevState.isSignup }
     })
   }
-  
-  render () {
+
+  render() {
     const formElemetsArray = [];
     for (let key in this.state.controls) {
       formElemetsArray.push({
@@ -83,23 +83,23 @@ class Auth extends Component {
 
     let form = formElemetsArray.map(formElement => (
       <Input
-        key={formElement.id} 
-        elementType={formElement.config.elementType} 
+        key={formElement.id}
+        elementType={formElement.config.elementType}
         elementConfig={formElement.config.elementConfig}
         value={formElement.config.value}
         invalid={!formElement.config.valid}
         shouldValidate={formElement.config.validation}
         touched={formElement.config.touched}
         changed={(event) => this.inputChangedHandler(event, formElement.id)} />
-      )
     )
-    
+    )
+
     if (this.props.loading) {
       form = <Spinner />
     }
 
     let errorMessage = null;
-    
+
     if (this.props.error) {
       errorMessage = (
         <p>{this.props.error.message}</p>
@@ -119,7 +119,7 @@ class Auth extends Component {
           {form}
           <Button btnType="Success" >Submit </Button>
         </form>
-        <Button 
+        <Button
           clicked={this.switchAuthModeHandler}
           btnType="Danger">Switch to {this.state.isSignup ? 'SIGNIN' : 'SIGNUP'}</Button>
       </div>

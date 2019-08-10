@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import styles from './Layout.css';
@@ -11,22 +11,22 @@ class Layout extends Component {
   }
 
   sideDrawerClosedHandler = () => {
-    this.setState({showSideDrawer: false});
+    this.setState({ showSideDrawer: false });
   }
 
   sideDrawerToggleHandler = () => {
     this.setState((prevState) => {
-      return {showSideDrawer: !prevState.showSideDrawer};
+      return { showSideDrawer: !prevState.showSideDrawer };
     });
   }
 
-  render () {
+  render() {
     return (
       <>
-        <Toolbar 
+        <Toolbar
           isAuth={this.props.isAuthenticated}
           drawerToggle={this.sideDrawerToggleHandler} />
-        <SideDrawer 
+        <SideDrawer
           isAuth={this.props.isAuthenticated}
           opened={this.state.showSideDrawer} closed={this.sideDrawerClosedHandler} />
         <main className={styles.Content}>

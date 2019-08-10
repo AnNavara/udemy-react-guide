@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Burger from '../../components/Burger/Burger';
@@ -18,8 +18,8 @@ class BurgerBuilder extends Component {
   componentDidMount() {
     this.props.onInitIngredients();
   }
-  
-  updatePurchaseState (ingredients) {
+
+  updatePurchaseState(ingredients) {
     const sum = Object.keys(ingredients)
       .map(igKey => {
         return ingredients[igKey];
@@ -27,12 +27,12 @@ class BurgerBuilder extends Component {
       .reduce((sum, el) => {
         return sum + el;
       }, 0);
-      return sum > 0
+    return sum > 0
   }
 
   purchaseHandler = () => {
     if (this.props.isAuthenticated) {
-      this.setState({purchasing: true});
+      this.setState({ purchasing: true });
     } else {
       this.props.onSetAuthRedirectPath('/checkout')
       this.props.history.push('/auth');
@@ -40,7 +40,7 @@ class BurgerBuilder extends Component {
   }
 
   purchaseCancelHandler = () => {
-    this.setState({purchasing: false});
+    this.setState({ purchasing: false });
   }
 
   purchaseContinueHandler = () => {
@@ -66,13 +66,13 @@ class BurgerBuilder extends Component {
           <BuildControls
             price={this.props.price}
             addIngredient={this.props.onIngredientAdded}
-            removeIngredient={this.props.onIngredientRemoved} 
-            purchasable={this.updatePurchaseState(this.props.ings)} 
-            disabled={disableInfo} 
+            removeIngredient={this.props.onIngredientRemoved}
+            purchasable={this.updatePurchaseState(this.props.ings)}
+            disabled={disableInfo}
             isAuth={this.props.isAuthenticated}
             ordered={this.purchaseHandler} />
-          </>);
-      orderSummary = <OrderSummary 
+        </>);
+      orderSummary = <OrderSummary
         price={this.props.price}
         purchaseContinue={this.purchaseContinueHandler}
         purchaseCanceled={this.purchaseCancelHandler}

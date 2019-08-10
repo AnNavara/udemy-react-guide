@@ -31,11 +31,11 @@ export const fetchIngredientsFailed = () => {
 export const initIngredients = () => {
   return dispatch => {
     axios.get('https://udemy-react-burger-54667.firebaseio.com/ingredients.json')
-    .then(response => {
-      dispatch(setIngredients(response.data));
-    })
-    .catch(error => {
-      dispatch(fetchIngredientsFailed());
-    });
+      .then(response => {
+        dispatch(setIngredients(response.data));
+      })
+      .catch(error => {
+        dispatch(fetchIngredientsFailed());
+      });
   }
 };

@@ -86,8 +86,8 @@ class ContactData extends Component {
         elementType: 'select',
         elementConfig: {
           options: [
-            {value: 'fastest', displayValue: 'Fastest'},
-            {value: 'cheapest',displayValue: 'Cheapest'}
+            { value: 'fastest', displayValue: 'Fastest' },
+            { value: 'cheapest', displayValue: 'Cheapest' }
           ]
         },
         value: 'fastest',
@@ -131,7 +131,7 @@ class ContactData extends Component {
       formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid;
     }
 
-    this.setState({orderForm: updatedOrderForm, formIsValid: formIsValid});
+    this.setState({ orderForm: updatedOrderForm, formIsValid: formIsValid });
   }
 
   render() {
@@ -144,20 +144,20 @@ class ContactData extends Component {
     }
 
     let form = (
-    <form onSubmit={this.orderHandler} >
-      {formElemetsArray.map(formElement => (
-        <Input 
-          key={formElement.id}
-          elementType={formElement.config.elementType} 
-          elementConfig={formElement.config.elementConfig}
-          value={formElement.config.value}
-          invalid={!formElement.config.valid}
-          shouldValidate={formElement.config.validation}
-          touched={formElement.config.touched}
-          changed={(event) => this.inputChangedHandler(event, formElement.id)} />
-      ))}
-      <Button btnType="Success" disabled={!this.state.formIsValid}>Order</Button>
-    </form>
+      <form onSubmit={this.orderHandler} >
+        {formElemetsArray.map(formElement => (
+          <Input
+            key={formElement.id}
+            elementType={formElement.config.elementType}
+            elementConfig={formElement.config.elementConfig}
+            value={formElement.config.value}
+            invalid={!formElement.config.valid}
+            shouldValidate={formElement.config.validation}
+            touched={formElement.config.touched}
+            changed={(event) => this.inputChangedHandler(event, formElement.id)} />
+        ))}
+        <Button btnType="Success" disabled={!this.state.formIsValid}>Order</Button>
+      </form>
     );
     if (this.props.loading) {
       form = <Spinner />

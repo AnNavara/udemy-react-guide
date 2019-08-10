@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import asyncComponent from './hoc/asyncComponent/asyncComponent';
@@ -46,7 +46,7 @@ class App extends Component {
           <Route path="/auth" component={asyncAuth} />
           <Route path="/" exact component={BurgerBuilder} />
           <Redirect to="/" />
-      </Switch>
+        </Switch>
       )
     }
 
